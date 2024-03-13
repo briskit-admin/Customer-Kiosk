@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "959474970060",
+    "project_id": "briskit-52b77",
+    "storage_bucket": "briskit-52b77.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:959474970060:android:202100d15c657a89464169",
+        "android_client_info": {
+          "package_name": "com.customerkiosk"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfmamjih_GtJKo0Z22v1Ifec45HdGO4AM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
