@@ -2,11 +2,11 @@ import React, { useRef } from 'react';
 import { View, TextInput, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import colors from 'constants/colors'
 
-const SearchBar = ({ placeholder, onSearch }) => {
+const SearchBar = ({ placeholder, onSearch, style }) => {
   const inputRef = useRef(null);
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, style]}>
       <TouchableOpacity
         onPress={() => inputRef.current.focus()}
         style={styles.iconContainer}
@@ -29,26 +29,26 @@ const SearchBar = ({ placeholder, onSearch }) => {
 
 const styles = StyleSheet.create({
   container: {
-    height: 52,
+    height: 72,
     flexDirection: 'row',
     alignItems: 'center',
     borderRadius: 10,
-    paddingLeft: 10,
+    paddingLeft: 16,
     borderColor: colors.border,
-    borderWidth: 1,
+    borderWidth: 2,
     marginTop: 10,
   },
   iconContainer: {
-    marginRight: 10,
+    marginRight: 20,
   },
   icon: {
-    width: 24,
-    height: 24,
+    width: 32,
+    height: 32,
   },
   input: {
     flex: 1,
     paddingVertical: 8,
-    fontSize: 16,
+    fontSize: 22,
     color: '#333',
   },
 });

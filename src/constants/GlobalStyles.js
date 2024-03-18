@@ -15,5 +15,20 @@ export const GlobalStyles = StyleSheet.create({
         paddingHorizontal: 8,
         paddingVertical: 12,
         width: 160,
+    },
+    smThemeText: {
+        fontSize: 16,
+        color: colors.theme,
+        fontWeight: '600',
+    },
+    lgBlackText: {
+        fontSize: 24,
+        color: 'black',
+        fontWeight: '600',
+    },
+    mdBlackText: {
+        fontSize: 22,
+        color: 'black',
+        fontWeight: '600',
     }
 });

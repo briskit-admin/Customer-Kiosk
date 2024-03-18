@@ -1,16 +1,27 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
+import AutoLogout from './AutoLogout';
 
 const Layout = ({ children }) => {
-  return <View style={styles.container}>{children}</View>;
+  return (
+  <View style={styles.container}>
+    {/* <AutoLogout style={styles.autoLogout}/> */}
+    {children}
+  </View>
+  )
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 40, // Fixed padding for the whole app
-    backgroundColor: '#FFFFFF', // Fixed background color for the whole app
+    padding: 40,
+    backgroundColor: '#FFFFFF',
   },
+  autoLogout: {
+    position: 'absolute',
+    top: 10,
+    right: 10,
+  }
 });
 
 export default Layout;

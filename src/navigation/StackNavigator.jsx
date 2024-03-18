@@ -1,104 +1,118 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import { createStackNavigator, TransitionPresets } from '@react-navigation/stack';
+import HomeScreen from 'screens/HomeScreen';
+import RestaurantHomeScreen from 'screens/HomeScreen/RestaurantHomeScreen';
+import CartScreen from 'screens/CartScreen';
+import LockerScreen from 'screens/LockerScreen';
+import PaymentScreen from 'screens/PaymentScreen';
+import OrderListScreen from 'screens/OrderListScreen';
+import OrderStatusScreen from 'screens/OrderListScreen/OrderStatusScreen';
+import ProfileScreen from 'screens/ProfileScreen';
+import SettingsScreen from 'screens/ProfileScreen/SettingsScreen';
 
-const MenuStack = createStackNavigator();
+
+const HomeStack = createStackNavigator();
 const OrderListStack = createStackNavigator();
 const ProfileStack = createStackNavigator();
-const BusinessStack = createStackNavigator();
 
 
-// export const MenuStackScreen = () => (
+export const HomeStackScreen = () => (
 
-//     <MenuStack.Navigator
-//         screenOptions={{
-//             headerTitleStyle: styles.headerTitle,
-//             headerBackTitleVisible: false, // Hides the back title next to the back button (iOS)
-//             gestureEnabled: true, // Enable gesture navigation
-//             ...TransitionPresets.SlideFromRightIOS,
-//         }}
-//     >
-//         <MenuStack.Screen
-//             name="MenuScreen"
-//             component={MenuScreen}
-//             options={{ title: 'Menu' }}
-//         />
-//         <MenuStack.Screen
-//             name="EditItemScreen"
-//             component={EditItemScreen}
-//             options={{ title: 'Edit Item', headerTitleStyle: styles.headerSmallTitle }}
-//         />
-//     </MenuStack.Navigator>
-// );
+    <HomeStack.Navigator
+        screenOptions={{
+            headerTitleStyle: styles.headerTitle,
+            headerBackTitleVisible: false, // Hides the back title next to the back button (iOS)
+            gestureEnabled: true, // Enable gesture navigation
+            ...TransitionPresets.SlideFromRightIOS,
+        }}
+    >
+        <HomeStack.Screen
+            name="HomeScreen"
+            component={HomeScreen}
+            options={{ title: 'Home' }}
+        />
+        <HomeStack.Screen
+            name="RestaurantHomeScreen"
+            component={RestaurantHomeScreen}
+            options={{ title: 'Restaurant' }}
+        />
+        <HomeStack.Screen
+            name="OrderStatusScreen"
+            component={OrderStatusScreen}
+            options={{ title: 'Rajdhani Express', headerTitleStyle: styles.headerSmallTitle }}
+        />
+         <HomeStack.Screen
+            name="CartScreen"
+            component={CartScreen}
+            options={{ title: 'My Cart', headerTitleStyle: styles.headerSmallTitle }}
+        />
+         <HomeStack.Screen
+            name="LockerScreen"
+            component={LockerScreen}
+            options={{ title: 'My Cart', headerTitleStyle: styles.headerSmallTitle }}
+        />
+        <HomeStack.Screen
+            name="PaymentScreen"
+            component={PaymentScreen}
+            options={{ title: 'My Cart', headerTitleStyle: styles.headerSmallTitle }}
+        />
+    </HomeStack.Navigator>
+);
 
-// export const OrderListStackScreen = () => (
+export const OrderListStackScreen = () => (
 
-//     <OrderListStack.Navigator
-//         screenOptions={{
-//             headerTitleStyle: styles.headerTitle,
-//             headerBackTitleVisible: false, // Hides the back title next to the back button (iOS)
-//             gestureEnabled: true, // Enable gesture navigation
-//             ...TransitionPresets.SlideFromRightIOS,
-//         }}
-//     >
-//         <OrderListStack.Screen
-//             name="OrderListScreen"
-//             component={OrderListScreen}
-//             options={{ title: 'Orders' }}
-//         />
-//         <OrderListStack.Screen
-//             name="OrderDetailScreen"
-//             component={OrderDetailScreen}
-//             options={{ title: 'Order #301', headerTitleStyle: styles.headerSmallTitle }}
-//         />
-//     </OrderListStack.Navigator>
-// );
+    <OrderListStack.Navigator
+        screenOptions={{
+            headerTitleStyle: styles.headerTitle,
+            headerBackTitleVisible: false, // Hides the back title next to the back button (iOS)
+            gestureEnabled: true,
+            ...TransitionPresets.SlideFromRightIOS,
+        }}
+    >
+        <OrderListStack.Screen
+            name="OrderListScreen"
+            component={OrderListScreen}
+            options={{ title: 'Orders' }}
+        />
+        <OrderListStack.Screen
+            name="OrderStatusScreen"
+            component={OrderStatusScreen}
+            options={{ title: 'Your Order is Confirmed', headerTitleStyle: styles.headerSmallTitle }}
+        />
+    </OrderListStack.Navigator>
+);
 
 
-// export const ProfileStackScreen = () => (
-//     <ProfileStack.Navigator
-//         screenOptions={{
-//             headerTitleStyle: styles.headerTitle,
-//             gestureEnabled: true, // Enable gesture navigation
-//             ...TransitionPresets.SlideFromRightIOS,
-//         }}
-//     >
-//         <ProfileStack.Screen
-//             name="ProfileScreen"
-//             component={ProfileScreen}
-//             options={{ headerShown: false }}
-//         />
-//         <ProfileStack.Screen
-//             name="SettingsScreen"
-//             component={SettingsScreen}
-//             options={{ title: 'Settings', headerTitleStyle: styles.headerSmallTitle }}
-//         />
-//     </ProfileStack.Navigator>
-// );
+export const ProfileStackScreen = () => (
+    <ProfileStack.Navigator
+        screenOptions={{
+            headerTitleStyle: styles.headerTitle,
+            gestureEnabled: true,
+            ...TransitionPresets.SlideFromRightIOS,
+        }}
+    >
+        <ProfileStack.Screen
+            name="ProfileScreen"
+            component={ProfileScreen}
+            options={{ headerShown: false }}
+        />
+        <ProfileStack.Screen
+            name="SettingsScreen"
+            component={SettingsScreen}
+            options={{ title: 'Settings', headerTitleStyle: styles.headerSmallTitle }}
+        />
+    </ProfileStack.Navigator>
+);
 
-// export const BusinessStackScreen = () => (
-//     <BusinessStack.Navigator
-//         screenOptions={{
-//             headerTitleStyle: styles.headerTitle,
-//             gestureEnabled: true, // Enable gesture navigation
-//             ...TransitionPresets.SlideFromRightIOS,
-//         }}
-//     >
-//         <BusinessStack.Screen
-//             name="BusinessScreen"
-//             component={BusinessScreen}
-//             options={{ title: 'Business' }}
-//         />
-//     </BusinessStack.Navigator>
-// );
 
-// const styles = StyleSheet.create({
-//     headerTitle: {
-//         fontSize: 38,
-//         fontWeight: 'bold',
-//     },
-//     headerSmallTitle: {
-//         fontSize: 32,
-//         fontWeight: 'bold',
-//     }
-// })
+const styles = StyleSheet.create({
+    headerTitle: {
+        fontSize: 38,
+        fontWeight: 'bold',
+    },
+    headerSmallTitle: {
+        fontSize: 32,
+        fontWeight: 'bold',
+    }
+})
