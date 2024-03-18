@@ -1,14 +1,20 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import Layout from 'common/Layout'
 
-const CartScreen
- = () => {
+const CartScreen = ({navigation}) => {
   return (
-    <View>
-      <Text>CartScreen
-        
-      </Text>
-    </View>
+    <Layout
+      navigation={navigation}
+      backTitle='My Cart'
+      bottomBar
+      btnText='Choose Locker'
+      next
+      price='400'
+      onBtnPress={() => navigation.navigate('LockerScreen')}
+    >
+      <Text>Cart Screen</Text>
+    </Layout>
   )
 }
 

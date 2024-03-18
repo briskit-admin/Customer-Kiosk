@@ -78,7 +78,7 @@ const LoginScreen = ({navigation}) => {
                                     }}
                                     disabled={isButtonDisabled}
                                 >
-                                    <Text style={[styles.code, isButtonDisabled && { color: 'rgba(255,255,255,0.15)', fontSize: 28 }]}>Continue</Text>
+                                    <Text style={[styles.code, isButtonDisabled && { color: 'rgba(255,255,255,0.15)', fontSize: 32, fontWeight:'600' }]}>Continue</Text>
                                 </TouchableOpacity>
                             </View>
                         </> :
@@ -109,7 +109,6 @@ const LoginScreen = ({navigation}) => {
                                             // sendOtp(`+91${phoneNumber}`);
                                             setLoginScreen(false)
                                         }}
-                                        disabled={isButton2Disabled}
                                     >
                                         <Text style={[styles.code, { fontSize: 28 }]}>Regenerate OTP</Text>
                                     </TouchableOpacity>
@@ -122,7 +121,7 @@ const LoginScreen = ({navigation}) => {
                                             // setLoginScreen(false)
                                             navigation.navigate('IntroScreen')
                                         }}
-                                        disabled={isButtonDisabled}
+                                        disabled={isButton2Disabled}
                                     >
                                         <Text style={[styles.code, { fontSize: 28 }]}>Get Started</Text>
                                     </TouchableOpacity>
@@ -186,14 +185,14 @@ const styles = StyleSheet.create({
     tagline1: {
         color: 'rgba(255,255,255,0.5)',
         fontSize: 30,
-        fontWeight: '600',
+        fontWeight: '700',
         marginTop: 375,
     },
 
     tagline2: {
         color: 'white',
         fontSize: 50,
-        fontWeight: '600',
+        fontWeight: '700',
     },
     inputContainer: {
         flexDirection: 'row',
@@ -206,6 +205,7 @@ const styles = StyleSheet.create({
         fontSize: 32,
         color: 'white',
         textAlign: 'center',
+        fontWeight: '600',
     },
     phoneNumberInput: {
         backgroundColor: colors.bgLight,
@@ -214,6 +214,7 @@ const styles = StyleSheet.create({
         paddingVertical: 16,
         borderRadius: 16,
         fontSize: 32,
+        fontWeight: '600',
         color: 'white',
         textAlign: 'justify',
     },
@@ -221,16 +222,18 @@ const styles = StyleSheet.create({
         backgroundColor: 'black',
         padding: 16,
         borderRadius: 16,
+        fontSize: 32,
+        fontWeight: '600',
         width: '100%',
         marginTop: 12,
     },
     buttonDisabled: {
         backgroundColor: 'rgba(0,0,0,0.25)',
-        color: 'white',
     },
     otpMessage: {
-        color: 'rgba(235, 240, 243, 0.9)',
-        fontSize: 28,
+        color: '#EBF0F3B2',
+        fontSize: 26,
+        fontWeight: '500',
         marginTop: 40,
         marginBottom: -20,
 
@@ -252,17 +255,15 @@ const styles = StyleSheet.create({
     },
     text: {
         color: 'white',
+        opacity: 0.5,
         fontSize: 18,
+        fontWeight: '600',
         textAlign: 'center',
-    },
-    newLine: {
-        flexDirection: 'row', // Ensures inline display of text and touchable elements
-        flexWrap: 'wrap', // Allows text to wrap onto the next line
     },
     linkText: {
         color: 'white',
         textDecorationLine: 'underline',
-        fontWeight: 'bold',
+        fontWeight: '600',
         fontSize: 18,
     },
     linkContainer: {

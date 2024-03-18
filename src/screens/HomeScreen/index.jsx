@@ -50,7 +50,9 @@ const HomeScreen = ({navigation}) => {
   }
 
   return (
-    <Layout>
+    <Layout
+      title='Home'
+    >
         <SearchBar style={{marginBottom: 40}} placeholder='Search Restaurants..'/>
         <FlatList
           data={restaurants}

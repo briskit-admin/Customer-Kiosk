@@ -3,7 +3,7 @@ import React, { useEffect, useState} from 'react'
 import colors from 'constants/colors'
 
 
-const AutoLogout = ({onLogout, cart, style}) => {
+const AutoLogout = ({onLogout, isCartScreen, style}) => {
   const [secondsLeft, setSecondsLeft] = useState(60)
 
   // useEffect(() => {
@@ -24,7 +24,7 @@ const AutoLogout = ({onLogout, cart, style}) => {
 
   return (
     <View style={[styles.container, style]}>
-      <Text style={styles.text}>{cart ? 'Time remaining' : 'If no activity, logout automatically in'}</Text>
+      <Text style={styles.text}>{isCartScreen ? 'Time remaining' : 'If no activity, logout automatically in'}</Text>
       <Text style={styles.timer}>01.03</Text>
     </View>
   )
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.themeLight,
     borderRadius: 12,
     padding: 20,
-    alignSelf: 'flex-start',
+    alignSelf: 'flex-end',
   },
   text: {
     color: '#3F80B0',

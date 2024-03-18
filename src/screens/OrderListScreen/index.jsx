@@ -1,11 +1,14 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import Layout from 'common/Layout'
 
 const OrderListScreen = () => {
   return (
-    <View>
-      <Text>OrderListScreen</Text>
-    </View>
+    <Layout>
+      <View>
+        <Text>OrderListScreen</Text>
+      </View>
+    </Layout>
   )
 }
 

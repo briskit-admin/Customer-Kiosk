@@ -13,11 +13,13 @@ const IntroScreen = ({navigation, authenticate}) => {
     const [phoneNumber, setPhoneNumber] = useState('')
 
     return (
-    <Layout>
-        <View style={styles.header}>
+    <Layout 
+        title='Introduce yourself'
+    >
+        {/* <View style={styles.header}>
             <Text style={styles.headerTitle}>Introduce Yourself</Text>
             <AutoLogout style={styles.autoLogout}/>
-        </View>
+        </View> */}
         <View style={GlobalStyles.lightBorder}>
             <CustomInput 
                 label='Name'
@@ -49,7 +51,7 @@ const IntroScreen = ({navigation, authenticate}) => {
             />
         </View>
         <View style={styles.btnContainer}>
-            <CustomButton title='Get Started' onPress={() => console.log('later')}/>
+            <CustomButton title='Next' onPress={() => navigation.navigate('TimeSlotScreen')}/>
         </View>
     </Layout>
     )

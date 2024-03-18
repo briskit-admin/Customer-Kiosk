@@ -18,12 +18,12 @@ const customTextProps = {
 setCustomText(customTextProps);
 
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(true);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   return (
     <>
     <SafeAreaView style={{flex: 1}}>
-      <StatusBar backgroundColor="transparent" translucent={true} />
+      {/* <StatusBar backgroundColor="transparent" translucent={true} /> */}
         <NavigationContainer>
           {isAuthenticated ? <BottomTabNavigator /> : <AuthStackNavigator />}
         </NavigationContainer>

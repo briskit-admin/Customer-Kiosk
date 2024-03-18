@@ -21,7 +21,8 @@ function BottomTabNavigator() {
       <Tab.Screen name="HomeStackScreen" component={HomeStackScreen}
         options={({ route }) => ({
           tabBarStyle: {
-            // display: getFocusedRouteNameFromRoute(route) === 'OrderStatusScreen' ? 'none' : 'flex',
+            display: getFocusedRouteNameFromRoute(route) === 
+            'RestaurantHomeScreen' || 'CartScreen' || 'LockerScreen' || 'PaymentScreen' || 'OrderStatusScreen'  ? 'none' : 'flex',
             height: 80,
           },
           tabBarIcon: ({ focused }) => (
@@ -40,7 +41,7 @@ function BottomTabNavigator() {
       <Tab.Screen name="OrderListStackScreen" component={OrderListStackScreen}
         options={({ route }) => ({
           tabBarStyle: {
-            // display: getFocusedRouteNameFromRoute(route) === 'OrderDetailScreen' ? 'none' : 'flex',
+            display: getFocusedRouteNameFromRoute(route) === 'OrderStatusScreen' ? 'none' : 'flex',
             height: 80,
           },
           tabBarIcon: ({ focused }) => (
@@ -59,7 +60,7 @@ function BottomTabNavigator() {
       <Tab.Screen name="ProfileStackScreen" component={ProfileStackScreen}
         options={({ route }) => ({
             tabBarStyle: {
-              // display: getFocusedRouteNameFromRoute(route) === 'OrderDetailScreen' ? 'none' : 'flex',
+              display: getFocusedRouteNameFromRoute(route) === 'SettingsScreen' ? 'none' : 'flex',
               height: 80,
             },
           tabBarIcon: ({ focused }) => (
@@ -79,7 +80,7 @@ function BottomTabNavigator() {
 
 const styles = StyleSheet.create({
 //   menuContainer: {
-//     // height: 100,
+//     height: 100,
 //     paddingVertical: 40,
 //     backgroundColor: '#FAFAFA',
 //     borderTopWidth: 1,

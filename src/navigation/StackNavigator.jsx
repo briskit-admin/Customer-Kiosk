@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import { createStackNavigator, TransitionPresets } from '@react-navigation/stack';
+import AutoLogout from 'common/AutoLogout';
 import HomeScreen from 'screens/HomeScreen';
 import RestaurantHomeScreen from 'screens/HomeScreen/RestaurantHomeScreen';
 import CartScreen from 'screens/CartScreen';
@@ -25,27 +26,24 @@ export const HomeStackScreen = () => (
             headerBackTitleVisible: false, // Hides the back title next to the back button (iOS)
             gestureEnabled: true, // Enable gesture navigation
             ...TransitionPresets.SlideFromRightIOS,
+            headerShown: false,
         }}
     >
         <HomeStack.Screen
             name="HomeScreen"
             component={HomeScreen}
-            options={{ title: 'Home' }}
         />
         <HomeStack.Screen
             name="RestaurantHomeScreen"
             component={RestaurantHomeScreen}
-            options={{ title: 'Restaurant' }}
         />
         <HomeStack.Screen
             name="OrderStatusScreen"
             component={OrderStatusScreen}
-            options={{ title: 'Rajdhani Express', headerTitleStyle: styles.headerSmallTitle }}
         />
          <HomeStack.Screen
             name="CartScreen"
             component={CartScreen}
-            options={{ title: 'My Cart', headerTitleStyle: styles.headerSmallTitle }}
         />
          <HomeStack.Screen
             name="LockerScreen"

@@ -10,6 +10,7 @@ const FoodItem = ({data, style}) => {
     const onAdd = () => {
         setCount(prevCount => prevCount + 1 )
     }
+
     return (
         <View style={[styles.container, GlobalStyles.lightBorder, style]}>
             <View style={styles.itemWrap}>
