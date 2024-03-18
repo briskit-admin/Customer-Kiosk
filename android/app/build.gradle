@@ -114,8 +114,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-firestore'
     implementation 'com.google.firebase:firebase-auth'
     implementation 'com.google.firebase:firebase-storage'
-    implementation "androidx.browser:browser:1.2.0"
-    implementation 'com.google.firebase:firebase-messaging'
+    // implementation "androidx.browser:browser:1.2.0"
+    // implementation 'com.google.firebase:firebase-messaging'
 
     if (hermesEnabled.toBoolean()) {
         implementation("com.facebook.react:hermes-android")

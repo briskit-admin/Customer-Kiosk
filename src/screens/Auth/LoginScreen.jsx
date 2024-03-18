@@ -26,12 +26,12 @@ async function verifyOtp(confirmation, code) {
     }
 }
 
-const LoginScreen = () => {
+const LoginScreen = ({navigation}) => {
     const [phoneNumber, setPhoneNumber] = useState('');
     const [otp, setOtp] = useState('');
     const isButtonDisabled = phoneNumber.length < 10;
     const isButton2Disabled = otp.length < 6;
-    const [loginScreen, setLoginScreen] = useState(false)
+    const [loginScreen, setLoginScreen] = useState(true)
 
     return (
         <KeyboardAvoidingView
@@ -73,7 +73,7 @@ const LoginScreen = () => {
                                 <TouchableOpacity
                                     style={[styles.button, isButtonDisabled && styles.buttonDisabled]}
                                     onPress={() => {
-                                        sendOtp(`+91${phoneNumber}`);
+                                        // sendOtp(`+91${phoneNumber}`);
                                         setLoginScreen(false)
                                     }}
                                     disabled={isButtonDisabled}
@@ -84,7 +84,7 @@ const LoginScreen = () => {
                         </> :
                         <> 
                             <View>
-                                <Text style={styles.otpMessage}>`OTP has been sent to +91{phoneNumber}`</Text>
+                                <Text style={styles.otpMessage}>OTP has been sent to +91{phoneNumber}</Text>
                             </View>
                             <View style={styles.inputContainer}>
                                 <TextInput
@@ -106,7 +106,7 @@ const LoginScreen = () => {
                                     <TouchableOpacity
                                         style={[styles.button, {backgroundColor: colors.bgLight }] }
                                         onPress={() => {
-                                            sendOtp(`+91${phoneNumber}`);
+                                            // sendOtp(`+91${phoneNumber}`);
                                             setLoginScreen(false)
                                         }}
                                         disabled={isButton2Disabled}
@@ -118,8 +118,9 @@ const LoginScreen = () => {
                                     <TouchableOpacity
                                         style={styles.button}
                                         onPress={() => {
-                                            sendOtp(`+91${phoneNumber}`);
-                                            setLoginScreen(false)
+                                            // sendOtp(`+91${phoneNumber}`);
+                                            // setLoginScreen(false)
+                                            navigation.navigate('IntroScreen')
                                         }}
                                         disabled={isButtonDisabled}
                                     >

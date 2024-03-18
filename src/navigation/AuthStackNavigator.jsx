@@ -1,13 +1,13 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import LoginScreen from 'screens/Auth/LoginScreen';
-import OtpScreen from 'screens/Auth/OtpScreen';
+import IntroScreen from 'screens/IntroScreen';
 
 const AuthStack = createStackNavigator();
 
-export const AuthStackNavigator = () => (
+export const AuthStackNavigator = ({authenticate}) => (
   <AuthStack.Navigator screenOptions={{ headerShown: false }}>
     <AuthStack.Screen name="LoginScreen" component={LoginScreen} />
-    <AuthStack.Screen name="OtpScreen" component={OtpScreen} />
+    <AuthStack.Screen name="IntroScreen" component={IntroScreen}/>
   </AuthStack.Navigator>
 );
