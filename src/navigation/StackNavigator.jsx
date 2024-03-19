@@ -21,6 +21,7 @@ const ProfileStack = createStackNavigator();
 export const HomeStackScreen = () => (
 
     <HomeStack.Navigator
+        initialRouteName="CartScreen"
         screenOptions={{
             headerTitleStyle: styles.headerTitle,
             headerBackTitleVisible: false, // Hides the back title next to the back button (iOS)

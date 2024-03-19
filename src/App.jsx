@@ -18,7 +18,7 @@ const customTextProps = {
 setCustomText(customTextProps);
 
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(true);
 
   return (
     <>

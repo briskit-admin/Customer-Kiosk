@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, Text, Image, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, Text, Image, TouchableOpacity, KeyboardAvoidingView } from 'react-native';
 import AutoLogout from './AutoLogout';
 import BottomBar from './BottomBar';
 import colors from 'constants/colors';
@@ -7,7 +7,11 @@ import colors from 'constants/colors';
 const Layout = ({ children, navigation, title, title2, backTitle, onBtnPress, isCartScreen, bottomBar, price, icon, next, btnText }) => {
 
   return (
-    <>
+    <KeyboardAvoidingView
+    style={{flex: 1}}
+    behavior={Platform.OS === "ios" ? "padding" : "height"}
+    keyboardVerticalOffset={Platform.OS === "ios" ? 64 : 0}
+  >
       <View style={styles.container}>
         <View style={styles.headerContainer}>
           {backTitle ?
@@ -41,7 +45,7 @@ const Layout = ({ children, navigation, title, title2, backTitle, onBtnPress, is
             </TouchableOpacity>
           </View>}
         </View>}
-    </>
+    </KeyboardAvoidingView>
   )
 };
 

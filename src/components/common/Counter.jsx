@@ -37,9 +37,8 @@ const Counter = ({ initialValue = 1 }) => {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: colors.themeLight,
-    paddingHorizontal: 16,
-    paddingRight: 20,
-    paddingVertical: 10,
+    paddingHorizontal: 14,
+    paddingVertical: 8,
     borderRadius: 10,
     flexDirection: 'row',
     alignItems: 'center',
@@ -52,8 +51,8 @@ const styles = StyleSheet.create({
     
   },
   icon: {
-    width: 24, 
-    height: 24,
+    width: 22, 
+    height: 22,
   },
   value: {
     fontSize: 18,
