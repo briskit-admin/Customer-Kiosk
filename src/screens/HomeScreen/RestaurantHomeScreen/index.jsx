@@ -85,7 +85,7 @@ const RestaurantHomeScreen = ({navigation, route}) => {
       <SearchBar style={{marginBottom: 30}} placeholder='Search Food..'/>
       <View style={styles.tagContainer}>
         {foodCategories.map((item, index) => {
-          return <Tag id={index} text={item}/>
+          return <Tag key={index} text={item}/>
         })}
       </View>
       <FlatList

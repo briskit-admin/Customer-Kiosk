@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Image, FlatList, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, Image, ScrollView, TouchableOpacity } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import Layout from 'common/Layout'
 import CustomButton from 'common/CustomButton'
@@ -58,18 +58,19 @@ const TimeSlotScreen = () => {
                         <Text style={styles.time}>{selectedTime}</Text>
                         <Image style={styles.icon} source={require('images/dropdown.png')} />
                     </TouchableOpacity>
-                    {showDropdown && (
-                        <FlatList
-                            data={timeSlots}
-                            renderItem={({ item }) => (
-                                <TouchableOpacity style={styles.dropdownItem} onPress={() => handleSelectTime(item)}>
-                                    <Text style={styles.time}>{item}</Text>
-                                </TouchableOpacity>
-                            )}
-                            keyExtractor={item => item}
-                            contentContainerStyle={{ paddingBottom: 400}}
-                        />
-                    )}
+                        {showDropdown && (
+                            <View style={styles.dropdownContainer}>
+                            {timeSlots.map((time, index) => (
+                              <TouchableOpacity
+                                key={index}
+                                style={styles.timeSlot}
+                                onPress={() => handleSelectTime(time)}
+                              >
+                                <Text style={styles.time}>{time}</Text>
+                              </TouchableOpacity>
+                            ))}
+                          </View>
+                        )}
             </View>
 
             <View style={styles.btnContainer}>
@@ -109,6 +110,12 @@ const styles = StyleSheet.create({
         borderColor: 'rgba(171, 171, 171, 0.29)',
         padding: 16,
     },
+    dropdownContainer: {
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        gap: 8,
+        marginTop: 16,
+    },
     time: {
         fontSize: 24,
         fontWeight: 'bold',
@@ -118,10 +125,12 @@ const styles = StyleSheet.create({
       width: 32,
       height: 32,
     },
-    dropdownItem: {
-        alignSelf: 'flex-start',
-        paddingLeft: 20,
-        paddingTop: 4,
+    timeSlot: {
+        backgroundColor: colors.themeLight,
+        paddingHorizontal: 20,
+        paddingVertical: 10,
+        marginTop: 4,
+        borderRadius: 10,
     },
     btnContainer: {
         position: 'absolute',
