@@ -5,7 +5,7 @@ import CustomButton from 'common/CustomButton'
 import { GlobalStyles } from 'constants/GlobalStyles'
 import colors from 'constants/colors'
 
-const TimeSlotScreen = () => {
+const TimeSlotScreen = ({navigation}) => {
     const [timeSlots, setTimeSlots] = useState([]);
     const [selectedTime, setSelectedTime] = useState('');
     const [showDropdown, setShowDropdown] = useState(false);
@@ -47,6 +47,7 @@ const TimeSlotScreen = () => {
     return (
         <Layout
             title='Choose a Time slot'
+            navigation={navigation}
         >
             <View style={[GlobalStyles.lightBorder, {paddingHorizontal: 40, paddingVertical: 50}]}>
                 <Text style={styles.title}>Set your Pickup  time</Text>
@@ -74,7 +75,7 @@ const TimeSlotScreen = () => {
             </View>
 
             <View style={styles.btnContainer}>
-                <CustomButton title='Get Started' onPress={() => console.log('pressed')} />
+                <CustomButton title='Get Started' onPress={() => navigation.navigate('HomeScreen')} />
             </View>
         </Layout>
     )

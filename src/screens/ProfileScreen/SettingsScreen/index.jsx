@@ -1,68 +1,40 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image } from 'react-native';
-import { launchImageLibrary } from 'react-native-image-picker';
 import colors from '../../../constants/colors';
+import Layout from 'common/Layout';
 
-const SettingsScreen = () => {
-  const [name, setName] = useState('Kanchana Naidu'); // Initial name
-  const [profileImage, setProfileImage] = useState(null); // Initial image state
+
+const SettingsScreen = ({navigation}) => {
+  const [name, setName] = useState('Kanchana Naidu')
+  const [profileImage, setProfileImage] = useState(null)
 
   // Function to handle name change
   const handleNameChange = (text) => {
     setName(text);
   };
 
-  // Function to handle profile image upload
-  const handleProfileImagePick = () => {
-    launchImageLibrary({ mediaType: 'photo' }, (response) => {
-      if (response.didCancel) {
-        console.log('User cancelled image picker');
-      } else if (response.error) {
-        console.log('Image picker error: ', response.error);
-      } else {
-        let imageUri = response.uri || response.assets?.[0]?.uri;
-        setProfileImage(imageUri);
-      }
-    });
-  };
-
-  // Function to save the updated name and image
-  const handleSave = () => {
-    // Implement save functionality
-    console.log('Name:', name);
-    if (profileImage) {
-      console.log('Profile image has been set');
-      // Implement functionality to upload the image to the server
-    }
-    // Display a success message or navigate the user away from the profile edit screen
-  };
-
   return (
-    <View style={styles.container}>
-      <TouchableOpacity style={styles.imageUploadContainer} onPress={handleProfileImagePick}>
-        {profileImage ? (
-          <Image source={{ uri: profileImage.uri }} style={styles.profileImage} />
-        ) : (
-          <Image style={styles.uploadIcon} source={require('images/upload.png')} />
-        )}
-      </TouchableOpacity>
+    <Layout backTitle='Settings' navigation={navigation}>
+      <View style={styles.container}>
+      <View style={{ width: '50%'}}>
+        <Image source={require('images/profile-placeholder.png')} style={styles.userImage} />
+        <Text style={styles.label}>Name</Text>
+        <TextInput
+          style={styles.input}
+          value={name}
+          onChangeText={handleNameChange}
+        />
 
-      <Text style={styles.label}>Name</Text>
-      <TextInput
-        style={styles.input}
-        value={name}
-        onChangeText={handleNameChange}
-      />
-
-      <Text style={styles.label}>Phone Number</Text>
-      <View style={styles.phoneNum}>
-        <Text style={styles.phoneNumText}>9894565342</Text>
+        <Text style={styles.label}>Phone Number</Text>
+        <View style={styles.phoneNum}>
+          <Text style={styles.phoneNumText}>9894565342</Text>
+        </View>
+        </View>
+        {/* <TouchableOpacity style={styles.button} onPress={handleSave}>
+          <Text style={styles.buttonText}>Save Changes</Text>
+        </TouchableOpacity> */}
       </View>
-
-      {/* <TouchableOpacity style={styles.button} onPress={handleSave}>
-        <Text style={styles.buttonText}>Save Changes</Text>
-      </TouchableOpacity> */}
-    </View>
+    </Layout>
   );
 };
 
@@ -70,29 +42,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    paddingTop: 60,
-    paddingHorizontal: 40,
-    backgroundColor: 'white',
-  },
-  imageUploadContainer: {
-    width: 134,
-    height: 134,
-    borderRadius: 100,
     justifyContent: 'center',
-    alignItems: 'center',
-    borderWidth: 1,
-    borderColor: colors.theme,
-    borderStyle: 'dashed',
-    marginBottom: 20,
   },
-  profileImage: {
-    width: 120,
-    height: 120,
-    borderRadius: 60,
-  },
-  uploadIcon: {
-    width: 42,
-    height: 42,
+  userImage: {
+    width: 133,
+    height: 133,
+    borderRadius: 100,
+    marginVertical: 20,
+    alignSelf: 'center',
   },
   label: {
     alignSelf: 'flex-start',

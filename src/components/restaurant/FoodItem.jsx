@@ -38,7 +38,6 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         gap: 20,
-
     },
     thumbnail: {
         width: 125,

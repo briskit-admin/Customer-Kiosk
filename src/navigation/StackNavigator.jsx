@@ -1,8 +1,8 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import { createStackNavigator, TransitionPresets } from '@react-navigation/stack';
-import AutoLogout from 'common/AutoLogout';
 import HomeScreen from 'screens/HomeScreen';
+import TimeSlotScreen from 'screens/TimeSlotScreen';
 import RestaurantHomeScreen from 'screens/HomeScreen/RestaurantHomeScreen';
 import CartScreen from 'screens/CartScreen';
 import LockerScreen from 'screens/LockerScreen';
@@ -21,7 +21,6 @@ const ProfileStack = createStackNavigator();
 export const HomeStackScreen = () => (
 
     <HomeStack.Navigator
-        initialRouteName="CartScreen"
         screenOptions={{
             headerTitleStyle: styles.headerTitle,
             headerBackTitleVisible: false, // Hides the back title next to the back button (iOS)
@@ -29,7 +28,11 @@ export const HomeStackScreen = () => (
             ...TransitionPresets.SlideFromRightIOS,
             headerShown: false,
         }}
-    >
+    >   
+        <HomeStack.Screen
+            name="TimeSlotScreen"
+            component={TimeSlotScreen}
+        />
         <HomeStack.Screen
             name="HomeScreen"
             component={HomeScreen}
@@ -38,10 +41,6 @@ export const HomeStackScreen = () => (
             name="RestaurantHomeScreen"
             component={RestaurantHomeScreen}
         />
-        <HomeStack.Screen
-            name="OrderStatusScreen"
-            component={OrderStatusScreen}
-        />
          <HomeStack.Screen
             name="CartScreen"
             component={CartScreen}
@@ -49,12 +48,10 @@ export const HomeStackScreen = () => (
          <HomeStack.Screen
             name="LockerScreen"
             component={LockerScreen}
-            options={{ title: 'My Cart', headerTitleStyle: styles.headerSmallTitle }}
         />
         <HomeStack.Screen
             name="PaymentScreen"
             component={PaymentScreen}
-            options={{ title: 'My Cart', headerTitleStyle: styles.headerSmallTitle }}
         />
     </HomeStack.Navigator>
 );
@@ -67,17 +64,16 @@ export const OrderListStackScreen = () => (
             headerBackTitleVisible: false, // Hides the back title next to the back button (iOS)
             gestureEnabled: true,
             ...TransitionPresets.SlideFromRightIOS,
+            headerShown: false,
         }}
     >
         <OrderListStack.Screen
             name="OrderListScreen"
             component={OrderListScreen}
-            options={{ title: 'Orders' }}
         />
         <OrderListStack.Screen
             name="OrderStatusScreen"
             component={OrderStatusScreen}
-            options={{ title: 'Your Order is Confirmed', headerTitleStyle: styles.headerSmallTitle }}
         />
     </OrderListStack.Navigator>
 );
@@ -89,6 +85,7 @@ export const ProfileStackScreen = () => (
             headerTitleStyle: styles.headerTitle,
             gestureEnabled: true,
             ...TransitionPresets.SlideFromRightIOS,
+            headerShown: false,
         }}
     >
         <ProfileStack.Screen

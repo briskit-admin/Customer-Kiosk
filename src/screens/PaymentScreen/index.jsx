@@ -21,7 +21,7 @@ const PaymentScreen = ({navigation}) => {
     if (paymentSuccess) {
       // After 3 seconds, navigate to the OrderStatusScreen
       timer = setTimeout(() => {
-        navigation.navigate('OrderStatusScreen');
+        navigation.navigate('OrderListStackScreen', {screen: 'OrderStatusScreen'});
       }, 3000);
     }
     return () => clearTimeout(timer); // Cleanup the timer when the component unmounts or paymentSuccess changes

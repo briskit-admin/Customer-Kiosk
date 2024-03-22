@@ -24,10 +24,10 @@ const ProfileScreen = () => {
     <Layout
       showMenu
       navigation={navigation}
+      title='Profile'
     >
-      <ScrollView contentContainerStyle={styles.container}>
-        <Image source={require('images/logo-black.png')} style={styles.logo} />
-        <Image source={{ uri: "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250" }} style={styles.userImage} />
+      <View style={styles.container}>
+        <Image source={require('images/profile-placeholder.png')} style={styles.userImage} />
         <Text style={styles.userName}>Raghav Handa</Text>
         <View style={styles.buttonGroup}>
           <TouchableOpacity style={[styles.button, styles.topButton]} onPress={handleSettingsPress}>
@@ -37,10 +37,10 @@ const ProfileScreen = () => {
             <Text style={styles.buttonText}>Call customer care</Text>
           </TouchableOpacity>
         </View>
-        <TouchableOpacity style={[GlobalStyles.lightBorder, { alignSelf: 'stretch', paddingLeft: 15 }]} onPress={handleLogoutPress}>
+        <TouchableOpacity style={[GlobalStyles.lightBorder, styles.button]} onPress={handleLogoutPress}>
           <Text style={styles.buttonText}>Logout</Text>
         </TouchableOpacity>
-      </ScrollView>
+      </View>
     </Layout>
   )
 }
@@ -49,14 +49,11 @@ export default ProfileScreen
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     alignItems: 'center',
+    justifyContent: 'center',
     padding: 20,
-    paddingTop: 60,
-  },
-  logo: {
-    maxWidth: 200,
-    maxHeight: 80,
-    resizeMode: 'contain',
+    // paddingTop: 60,
   },
   userImage: {
     width: 133,
@@ -65,7 +62,7 @@ const styles = StyleSheet.create({
     marginVertical: 20,
   },
   userName: {
-    fontSize: 32,
+    fontSize: 36,
     fontWeight: 'bold',
     color: 'black',
     marginBottom: 20,
@@ -74,20 +71,21 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderWidth: 1,
     borderColor: colors.border,
-    alignSelf: 'stretch',
+    // alignSelf: 'stretch',
+    width: '50%',
     marginVertical: 10,
   },
   button: {
+    width: '50%',
     padding: 15,
-    alignSelf: 'stretch',
-    justifyContent: 'center',
+    marginTop: 10,
   },
   topButton: {
     borderBottomWidth: 1,
     borderBottomColor: colors.border,
   },
   buttonText: {
-    fontSize: 16,
+    fontSize: 22,
     fontWeight: '600',
     color: colors.theme,
   },

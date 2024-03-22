@@ -9,6 +9,7 @@ import colors from '../constants/colors';
 const Tab = createBottomTabNavigator();
 
 function BottomTabNavigator() {
+
   return (
     <Tab.Navigator
       screenOptions={{
@@ -18,23 +19,37 @@ function BottomTabNavigator() {
       }}
     >
       {/* Home */}
-      <Tab.Screen name="HomeStackScreen" component={HomeStackScreen}
-        options={({ route }) => ({
-          tabBarStyle: {
-            display: getFocusedRouteNameFromRoute(route) === 
-            'RestaurantHomeScreen' || 'CartScreen' || 'LockerScreen' || 'PaymentScreen' || 'OrderStatusScreen'  ? 'none' : 'flex',
-            height: 80,
+      <Tab.Screen 
+        name="HomeStackScreen" 
+        component={HomeStackScreen}
+        listeners={({ navigation }) => ({
+          tabPress: (e) => {
+            e.preventDefault();
+            navigation.navigate('HomeStackScreen', {
+              screen: 'TimeSlotScreen',
+            });
           },
-          tabBarIcon: ({ focused }) => (
-            <View style={styles.menuItem}>
-              <Image
-                source={require('images/home-icon.png')}
-                resizeMode='contain'
-                style={[styles.menuIcon, { tintColor: focused ? colors.theme : colors.textLight }]} />
-              <Text style={[styles.menuText, { color: focused ? colors.theme : colors.textLight }]}>Home</Text>
-            </View>
-          )
         })}
+        options={({ route }) => {
+          const hideOnScreens = ['TimeSlotScreen', 'RestaurantHomeScreen', 'CartScreen', 'LockerScreen', 'PaymentScreen', 'OrderStatusScreen'];
+          const routeName = getFocusedRouteNameFromRoute(route) ?? 'TimeSlotScreen';
+
+          return {
+            tabBarStyle: {
+              display: hideOnScreens.includes(routeName) ? 'none' : 'flex',
+              height: 80,
+            },
+            tabBarIcon: ({ focused }) => (
+              <View style={styles.menuItem}>
+                <Image
+                  source={require('images/home-icon.png')}
+                  resizeMode='contain'
+                  style={[styles.menuIcon, { tintColor: focused ? colors.theme : colors.textLight }]} />
+                <Text style={[styles.menuText, { color: focused ? colors.theme : colors.textLight }]}>Home</Text>
+              </View>
+            ),
+          };
+        }}
       />
 
       {/* Orders */}
@@ -59,10 +74,10 @@ function BottomTabNavigator() {
       {/* Profile */}
       <Tab.Screen name="ProfileStackScreen" component={ProfileStackScreen}
         options={({ route }) => ({
-            tabBarStyle: {
-              display: getFocusedRouteNameFromRoute(route) === 'SettingsScreen' ? 'none' : 'flex',
-              height: 80,
-            },
+          tabBarStyle: {
+            display: getFocusedRouteNameFromRoute(route) === 'SettingsScreen' ? 'none' : 'flex',
+            height: 80,
+          },
           tabBarIcon: ({ focused }) => (
             <View style={styles.menuItem}>
               <Image
@@ -79,13 +94,13 @@ function BottomTabNavigator() {
 }
 
 const styles = StyleSheet.create({
-//   menuContainer: {
-//     height: 100,
-//     paddingVertical: 40,
-//     backgroundColor: '#FAFAFA',
-//     borderTopWidth: 1,
-//     borderTopColor: '#E0E0E0',
-//   },
+  //   menuContainer: {
+  //     height: 100,
+  //     paddingVertical: 40,
+  //     backgroundColor: '#FAFAFA',
+  //     borderTopWidth: 1,
+  //     borderTopColor: '#E0E0E0',
+  //   },
   menuItem: {
     alignItems: 'center',
     paddingVertical: 10,
