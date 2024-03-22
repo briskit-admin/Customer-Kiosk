@@ -14,7 +14,7 @@ const InputWithButton = ({placeholder, onChangeText, value, buttonText, handleVa
         placeholder={placeholder}
       />
       <TouchableOpacity style={styles.button} onPress={handleValidate}>
-        <Image style={{ width: 20, height: 20 }}source={require('images/tick.png')}/>
+        <Image style={{ width: 20, height: 20 }} source={require('images/tick.png')}/>
         <Text style={styles.buttonText}>{buttonText}</Text>
       </TouchableOpacity>
     </View>

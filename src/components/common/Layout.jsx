@@ -4,14 +4,31 @@ import AutoLogout from './AutoLogout';
 import BottomBar from './BottomBar';
 import colors from 'constants/colors';
 
-const Layout = ({ children, navigation, title, title2, backTitle, onBtnPress, isCartScreen, bottomBar, price, icon, next, btnText }) => {
+const Layout = (
+  {
+    children,
+    navigation,
+    title,
+    title2,
+    backTitle,
+    onBtnPress,
+    isCartScreen,
+    bottomBar,
+    price,
+    icon,
+    next,
+    btnText,
+    iconLeft,
+    leftBtnText,
+    onLeftBtnPress
+  }) =>
 
-  return (
+   (
     <KeyboardAvoidingView
-    style={{flex: 1}}
-    behavior={Platform.OS === "ios" ? "padding" : "height"}
-    keyboardVerticalOffset={Platform.OS === "ios" ? 64 : 0}
-  >
+      style={{ flex: 1 }}
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      keyboardVerticalOffset={Platform.OS === "ios" ? 64 : 0}
+    >
       <View style={styles.container}>
         <View style={styles.headerContainer}>
           {backTitle ?
@@ -32,22 +49,28 @@ const Layout = ({ children, navigation, title, title2, backTitle, onBtnPress, is
       </View>
       {bottomBar &&
         <View style={styles.bottomBarContainer}>
-          <View style={styles.leftSection}>
-            <Text style={styles.total}>Total</Text>
-            <Text style={styles.price}>{`₹${price}`}</Text>
-          </View>
+          {price &&
+            <View style={styles.leftSection}>
+              <Text style={styles.total}>Total</Text>
+              <Text style={styles.price}>{`₹${price}`}</Text>
+            </View>}
+          {leftBtnText &&
+            <TouchableOpacity style={styles.btnContainer} onPress={onLeftBtnPress}>
+              <Image source={iconLeft} style={styles.iconLeft} />
+              <Text style={styles.btnText}>{leftBtnText}</Text>
+          </TouchableOpacity>
+          }
           {btnText &&
-          <View style={styles.rightSection}>
-            <TouchableOpacity style={styles.btnContainer} onPress={onBtnPress}>
-              {icon && <Image source={icon} style={styles.icon} />}
-              <Text style={styles.btnText}>{btnText}</Text>
-              {next && <Image style={styles.next} source={require('images/next.png')} />}
-            </TouchableOpacity>
-          </View>}
+            <View style={styles.rightSection}>
+              <TouchableOpacity style={styles.btnContainer} onPress={onBtnPress}>
+                {icon && <Image source={icon} style={styles.icon} />}
+                <Text style={styles.btnText}>{btnText}</Text>
+                {next && <Image style={styles.next} source={require('images/next.png')} />}
+              </TouchableOpacity>
+            </View>}
         </View>}
     </KeyboardAvoidingView>
   )
-};
 
 const styles = StyleSheet.create({
   container: {
@@ -72,7 +95,7 @@ const styles = StyleSheet.create({
     height: 64,
   },
   backTitle: {
-    fontSize: 36,
+    fontSize: 30,
     fontWeight: 'bold',
     color: 'black',
   },
@@ -80,18 +103,19 @@ const styles = StyleSheet.create({
     flexDirection: 'column'
   },
   title: {
-    fontSize: 44,
+    fontSize: 38,
     fontWeight: 'bold',
     color: 'black',
   },
   title2: {
     color: colors.theme,
-    fontSize: 24,
+    fontSize: 20,
     fontWeight: '600'
   },
   // bottom bar
   bottomBarContainer: {
     backgroundColor: colors.theme,
+    width: '100%',
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -109,9 +133,14 @@ const styles = StyleSheet.create({
     color: 'white',
   },
   // bottom bar button
+  rightSection: {
+    flex: 1,
+  },
+
   btnContainer: {
     flexDirection: 'row',
     alignItems: 'center',
+    alignSelf: 'flex-end',
     backgroundColor: '#3F80B0',
     borderRadius: 10,
     borderWidth: 4,
@@ -133,6 +162,11 @@ const styles = StyleSheet.create({
     fontSize: 26,
     fontWeight: 'bold',
   },
+  iconLeft: {
+    tintColor: '#9CDCFF',
+    width: 28,
+    height: 28,
+  }
 })
 
 export default Layout;

@@ -12,7 +12,7 @@ const TimeSlotScreen = () => {
   
     useEffect(() => {
       const currentTime = new Date();
-      const minutesToNextQuarter = 15 - (currentTime.getMinutes() % 15);
+      const minutesToNextQuarter = 45 - (currentTime.getMinutes() % 45);
       const nextQuarter = new Date(currentTime.getTime() + minutesToNextQuarter * 60000);
   
       populateTimeSlots(nextQuarter);
@@ -49,7 +49,7 @@ const TimeSlotScreen = () => {
             title='Choose a Time slot'
         >
             <View style={[GlobalStyles.lightBorder, {paddingHorizontal: 40, paddingVertical: 50}]}>
-                <Text style={styles.title}>Set your pickuptime</Text>
+                <Text style={styles.title}>Set your Pickup  time</Text>
                 <Text style={styles.text}>Let us know when would like to pick up your food from this station and we’ll curate the listing of available restaurants at your selected time accordingly.</Text>
 
                 {/* Time slot dropdown */}  

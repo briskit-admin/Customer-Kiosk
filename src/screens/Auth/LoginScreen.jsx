@@ -57,6 +57,7 @@ const LoginScreen = ({navigation}) => {
                                     <Text style={styles.code}>+91</Text>
                                 </View>
                                 <TextInput
+                                    autoFocus
                                     placeholder='Your Phone Number'
                                     placeholderTextColor={'rgba(255,255,255,0.25)'}
                                     keyboardType='phone-pad'
@@ -88,6 +89,7 @@ const LoginScreen = ({navigation}) => {
                             </View>
                             <View style={styles.inputContainer}>
                                 <TextInput
+                                    autoFocus
                                     placeholder='Enter OTP'
                                     placeholderTextColor={'rgba(255,255,255,0.25)'}
                                     keyboardType='phone-pad'
