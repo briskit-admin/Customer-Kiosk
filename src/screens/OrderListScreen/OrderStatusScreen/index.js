@@ -9,7 +9,7 @@ const OrderStatusScreen = ({navigation}) => {
 
   // style={{fontWeight: 'bold', color: currentStep? '#fff' : '#000'}
 
-  const [currentStep, setCurrentStep] = useState(2);
+  const [currentStep, setCurrentStep] = useState(3);
 
   const handleLogout = () => {
     console.log('logged out')

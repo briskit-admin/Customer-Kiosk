@@ -20,13 +20,14 @@ async function verifyOtp(confirmation, code) {
     try {
         const result = await confirmation.confirm(code);
         console.log('User authenticated:', result.user);
+        authenticate()
     } catch (error) {
         console.error('Failed to verify OTP:', error);
         throw error;
     }
 }
 
-const LoginScreen = ({navigation}) => {
+const LoginScreen = ({navigation, authenticate}) => {
     const [phoneNumber, setPhoneNumber] = useState('');
     const [otp, setOtp] = useState('');
     const isButtonDisabled = phoneNumber.length < 10;
@@ -43,11 +44,11 @@ const LoginScreen = ({navigation}) => {
                 style={styles.backgroundImage}
             >
                 <View style={styles.content}>
-                    <Image style={styles.logo} source={require('images/logo.png')} />
+                    {/* <Image style={styles.logo} source={require('images/logo.png')} />
                     <View style={{ paddingLeft: 30, paddingBottom: 4 }}>
                         <Text style={styles.tagline1}>Quick & Instant Food Delivery for</Text>
                     </View>
-                    <Text style={styles.tagline2}> A Fast Paced World</Text>
+                    <Text style={styles.tagline2}> A Fast Paced World</Text> */}
 
                     {loginScreen ?
 
@@ -74,7 +75,7 @@ const LoginScreen = ({navigation}) => {
                                 <TouchableOpacity
                                     style={[styles.button, isButtonDisabled && styles.buttonDisabled]}
                                     onPress={() => {
-                                        // sendOtp(`+91${phoneNumber}`);
+                                        sendOtp(`+91${phoneNumber}`);
                                         setLoginScreen(false)
                                     }}
                                     disabled={isButtonDisabled}
@@ -119,9 +120,9 @@ const LoginScreen = ({navigation}) => {
                                     <TouchableOpacity
                                         style={styles.button}
                                         onPress={() => {
-                                            // sendOtp(`+91${phoneNumber}`);
+                                             verifyOtp(confirmationObject, otp);
                                             // setLoginScreen(false)
-                                            navigation.navigate('IntroScreen')
+                                            // navigation.navigate('IntroScreen')
                                         }}
                                         disabled={isButton2Disabled}
                                     >
@@ -200,11 +201,11 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         marginBottom: 20,
         gap: 12,
-        paddingHorizontal: 40,
-        marginTop: 60,
+        // paddingHorizontal: 40,
+        // marginTop: 60,
     },
     code: {
-        fontSize: 32,
+        fontSize: 12,
         color: 'white',
         textAlign: 'center',
         fontWeight: '600',
@@ -215,7 +216,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 16,
         paddingVertical: 16,
         borderRadius: 16,
-        fontSize: 32,
+        fontSize: 12,
         fontWeight: '600',
         color: 'white',
         textAlign: 'justify',
@@ -224,7 +225,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'black',
         padding: 16,
         borderRadius: 16,
-        fontSize: 32,
+        fontSize: 12,
         fontWeight: '600',
         width: '100%',
         marginTop: 12,
@@ -234,7 +235,7 @@ const styles = StyleSheet.create({
     },
     otpMessage: {
         color: '#EBF0F3B2',
-        fontSize: 26,
+        fontSize: 16,
         fontWeight: '500',
         marginTop: 40,
         marginBottom: -20,
@@ -244,7 +245,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'center',
         gap: 20,
-        paddingHorizontal: 40,
+        // paddingHorizontal: 40,
     },
      dualButton: {
         flex: 1,
